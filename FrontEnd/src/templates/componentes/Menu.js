@@ -38,7 +38,7 @@ export default function Menu(props) {
             <Nav.Link href="/emprestimo">
               Empréstimo
             </Nav.Link>
-            
+
             <Nav.Link href="/renovacao">
               Renovar
             </Nav.Link>
@@ -50,7 +50,7 @@ export default function Menu(props) {
             <Nav.Link href="/baixa">
               Baixa
             </Nav.Link>
-            
+
           </Nav>
           <Form className="d-flex">
             <Form.Control
@@ -59,14 +59,15 @@ export default function Menu(props) {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success" className='botão'>Pesquisar</Button>
+            <Button variant="outline-success" className='botão'>
+              Pesquisar
+            </Button>
 
           </Form>
-
-          <p >{String(authenticated)}</p>
           <button
             className="btn-sair"
             onClick={handleLogout}
+            style={{ marginLeft: '8px' }}
           >
             Sair
           </button>

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import TelaMenu from "./interfaces/TelaMenuSistema.js";
 import TelaCadastroPessoa from "./interfaces/TelaCadastroPessoa.jsx";
@@ -10,11 +9,11 @@ import TelaCadastroAutor from "./interfaces/TelaFormAutor.js";
 import TelaCadastroUsuario from "./interfaces/TelaFormUsuarios.js";
 import TelaCadastroExemplar from "./interfaces/TelaFormExemplar.jsx";
 import TelaCadastroBaixa from "./interfaces/TelaFormBaixa.jsx";
-import LoginPage from "./pages/LoginPage/index.jsx";
 import { AuthProvider, AuthContext } from "./contexts/auth.jsx"
 import TelaFormEmprestimo from "./interfaces/TelaFormEmprestimo.jsx";
 import TelaDevolucao from "./interfaces/TelaCadastroDevolucao.jsx";
 import TelaFormRenovacao from "./interfaces/TelaFormRenovacao.jsx";
+import LoginPage from "./LoginPage/index.jsx"
 
 const AppRoutes = () => {
 

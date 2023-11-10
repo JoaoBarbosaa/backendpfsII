@@ -1,0 +1,56 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 2rem;
+    color: white;
+}
+
+.login .form {
+    background-color: #f1f1f1;
+    width: 100%;
+    max-width: 480px;
+    padding: 0.5rem;
+}
+
+.login .field {
+    margin-bottom: 0.5rem;
+}
+
+.login .fiel label {
+    display: block;
+}
+
+.login .field input {
+    width: 100%;
+}
+
+.login .actions {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+#corpo {
+    background: linear-gradient(rgba(0, 0, 0, .50), rgba(0, 0, 0, .50)), url(../img/backgroundCadastro.jpg);
+    background-size: cover;
+    margin-top: 0vh;
+    padding: 5vh;
+    min-height: 100vh;
+
+}
+
+.mainForm {
+    color: rgb(236, 236, 236);
+    font-size: 1.1em;
+    padding: 2vh;
+    background-color: rgba(0, 0, 0, 0.268);
+    border: 1px solid rgb(255, 255, 255);
+    margin: 0% 22% 2% 22%;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
