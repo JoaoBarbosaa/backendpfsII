@@ -3,8 +3,16 @@ import "./estilos/tabela.css";
 import { urlBase } from "../utilitarios/definicoes";
 import { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useRef } from "react";
+import { utils, writeFileXLSX } from "xlsx";
 
 export default function TabelaBaixa(props) {
+  const tbl = useRef(null)
+
+  function imprimir(){
+    const wb = utils.table_to_book(tbl.current);
+      writeFileXLSX(wb, "SheetJSReactExport.xlsx");
+  }
 
   return (
     <body id="corpo" className="colorwhite ">
@@ -21,8 +29,12 @@ export default function TabelaBaixa(props) {
             </Button>
           </Col>
         </Row>
-
-        <Table striped bordered hover className="text-center">
+        <Row className='mb-2 mt-2 '>
+        <Col>
+            <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
+        </Col>
+        </Row>
+        <Table ref={tbl} striped bordered hover className="text-center">
           <thead className="colorwhite">
             <tr>
               <th>Codigo</th>
