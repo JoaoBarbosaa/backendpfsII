@@ -22,6 +22,8 @@ export default class ExemplarCTRL{
         
         exemplar.consultarCodigo(codExemplar)
         .then((pessoaEncontrada) => {
+
+
             if (pessoaEncontrada && pessoaEncontrada.length > 0){
                 const primeiraPessoa = pessoaEncontrada[0];
                 const baixa = new Baixa(0, motivBaixa, primeiraPessoa)
@@ -37,6 +39,7 @@ export default class ExemplarCTRL{
                         }
                     })
                 })
+
             }
         })
         

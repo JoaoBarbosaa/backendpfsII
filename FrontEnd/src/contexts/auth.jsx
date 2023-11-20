@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { urlBase } from "../contexts/../utilitarios/definicoes.js"
-
+const Swal = require('sweetalert2')
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -29,10 +29,14 @@ export const AuthProvider = ({ children }) => {
         },
         body: JSON.stringify({ cpf, senha }),
       });
-
       if (!response.ok) {
         // Lida com o caso de erro na resposta
         setError("CPF ou senha inválidos");
+        Swal.fire({
+          icon: "error",
+          title: "Usuário ou senha inválida",
+          text: "Tente novamente!",
+        });
         return;
       }
 

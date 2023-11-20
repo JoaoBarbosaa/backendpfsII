@@ -11,7 +11,7 @@ export default function TabelaBaixa(props) {
 
   function imprimir(){
     const wb = utils.table_to_book(tbl.current);
-      writeFileXLSX(wb, "SheetJSReactExport.xlsx");
+      writeFileXLSX(wb, "baixaexemplar.xlsx");
   }
 
   return (
