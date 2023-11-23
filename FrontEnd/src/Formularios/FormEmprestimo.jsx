@@ -6,6 +6,9 @@ import { Row, Col } from 'react-bootstrap';
 import { urlBase } from "../utilitarios/definicoes.js";
 import TabelaItensEmprestimo from '../tabelas/TabelaItensEmprestimo.jsx';
 import CaixaSelecao from '../componentes/busca/CaixaSelecao.jsx';
+import { useRef } from "react";
+import { utils, writeFileXLSX } from "xlsx";
+const Swal = require('sweetalert2')
 
 
 export default function Formulario(props) {
@@ -75,16 +78,19 @@ export default function Formulario(props) {
         }).then((resposta) => resposta.json())
             .then((dados) => {
                 if (dados.resultado) {
-                    alert("Não foi possivel gravar o emprestimo")
+                    Swal.fire("Não foi possivel gravar o emprestimo")
                 }
                 else {
-                    window.alert("Emprestimo cadastrado com sucesso!")
                     props.setModoEdicao(false);
                     props.exibirTabela(true);
+                    Swal.fire(
+                        'Emprestimo Cadastrado!',
+                        'Com sucesso no sistema',
+                        'success')
                 }
             })
             .catch((erro) => {
-                alert("Erro ao cadastrar o emprestimo");
+                Swal.fire("Erro ao cadastrar o emprestimo");
                 console.error(erro);
 
             });
