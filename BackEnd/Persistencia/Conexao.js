@@ -10,7 +10,8 @@ export default async function conectar(){
         host:"localhost",
         user:"root",
         password:"",
-        database:"quintaldaleiturapidw"
+        // database:"quintaldaleiturapidw"
+        database:"quintaldaleitura"
     });
 
 

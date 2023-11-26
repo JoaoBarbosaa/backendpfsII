@@ -6,6 +6,7 @@ import { Row, Col } from 'react-bootstrap';
 import "./estilos/EstiloForm.css";
 import CaixaSelecao from "../componentes/busca/CaixaSelecao";
 import { urlBase } from "../utilitarios/definicoes.js";
+const Swal = require('sweetalert2')
 
 export default function FormExemplar(props) {
 
@@ -74,17 +75,17 @@ export default function FormExemplar(props) {
           if (!resposta.ok) {
             throw new Error('Erro na atualização');
           }
-          return resposta.json(); // Retorna os dados atualizados após a atualização bem-sucedida
+          return resposta.json(); 
         })
         .then((dadosAtualizados) => {
-          // Verifica os dados retornados pela API
+        
           if (dadosAtualizados.resultado) {
-            alert("Não foi possível atualizar o exemplar");
+            Swal.fire("Não foi possível atualizar o exemplar");
           } else {
-            alert("Exemplar atualizado com sucesso");
-            // Corrija aqui para acessar as funções corretamente
+            Swal.fire("Exemplar atualizado com sucesso");
+            
             props.exibirTabela(true);
-            console.log(exemplar.acervo); // Aqui você pode acessar a propriedade "acervo" do exemplar
+            console.log(exemplar.acervo); 
           }
         })
         .catch((error) => {

@@ -17,6 +17,12 @@ export default function TabelaPessoas(props) {
     }
   };
 
+  function formatarCPF(cpf) {
+    const cpfLimpo = cpf.replace(/\D/g, "");
+  
+    return cpfLimpo.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+  }
+
   return (
     <body id="corpo" className="colorwhite">
       <div className="border corpoTabela PessoaEscp">
@@ -70,7 +76,7 @@ export default function TabelaPessoas(props) {
 
               return (
                 <tr key={pessoa.cpf}>
-                  <td id="colorwhite">{pessoa.cpf}</td>
+                  <td id="colorwhite">{formatarCPF(pessoa.cpf)}</td>
                   <td id="colorwhite">{pessoa.categoria}</td>
                   <td id="colorwhite">{pessoa.nome}</td>
                   <td id="colorwhite">{pessoa.sexo}</td>
