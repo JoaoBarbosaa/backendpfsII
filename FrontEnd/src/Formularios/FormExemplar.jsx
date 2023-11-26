@@ -56,7 +56,10 @@ export default function FormExemplar(props) {
           if (dados.resultado) {
             alert("Não foi possível inserir o exemplar");
           } else {
-            alert("Exemplar inserido com sucesso");
+            Swal.fire(
+              'Exemplar cadastrado',
+              'Com sucesso no sistema',
+              'success')
             props.setModoEdicao(false);
             props.exibirTabela(true);
             console.log(exemplar.acervo);

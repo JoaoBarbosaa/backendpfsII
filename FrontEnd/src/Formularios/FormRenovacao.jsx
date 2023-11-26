@@ -6,7 +6,7 @@ import { Row, Col } from 'react-bootstrap';
 import { urlBase } from "../utilitarios/definicoes.js";
 import TabelaItensRenovacao from '../tabelas/TabelaItensRenovacao.jsx';
 import CaixaSelecao from '../componentes/busca/CaixaSelecao.jsx';
-
+const Swal = require('sweetalert2')
 
 export default function Formulario(props) {
 
@@ -78,7 +78,10 @@ export default function Formulario(props) {
                     alert("Não foi possivel gravar o emprestimo")
                 }
                 else {
-                    window.alert("Emprestimo cadastrado com sucesso!")
+                    Swal.fire(
+                        'Renovação realizada',
+                        'Com sucesso no sistema',
+                        'success')
                     props.setModoEdicao(false);
                     props.exibirTabela(true);
                 }

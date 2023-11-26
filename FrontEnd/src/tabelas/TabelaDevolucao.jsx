@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Table, Container, Row, Col } from "react-bootstrap";
 import "./estilos/tabela.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
+const Swal = require('sweetalert2')
 export default function TabelaDevolucao(props) {
 
     const [termoDeBusca, setTermoDeBusca] = useState('');
@@ -70,9 +70,24 @@ export default function TabelaDevolucao(props) {
                                     <td>
                                         <Button variant="danger"
                                             onClick={() => {
-                                                if (window.confirm("Deseja realmente excluir a devolução?")) {
-                                                    props.excluirDevolucao(devolucao);
-                                                }
+                                                Swal.fire({
+                                                    title: "Tem certeza?",
+                                                    text: "Você não poderá reverter isso",
+                                                    icon: "warning",
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: "#3085d6",
+                                                    cancelButtonColor: "#d33",
+                                                    confirmButtonText: "Sim, exclui isso!"
+                                                  }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                      Swal.fire({
+                                                        title: "Deletado!",
+                                                        text: "Devolução deletada com sucesso. ",
+                                                        icon: "success"
+                                                      });
+                                                      props.excluirDevolucao(devolucao);
+                                                    }
+                                                  });
                                             }}
                                         >
                                             <i className="bi bi-trash"></i>
