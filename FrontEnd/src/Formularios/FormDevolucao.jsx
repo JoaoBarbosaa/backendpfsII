@@ -6,8 +6,13 @@ import { Row, Col } from 'react-bootstrap';
 import { urlBase } from "../utilitarios/definicoes.js";
 import TabelaItensDevolucao from '../tabelas/TabelaItensDevolucao.jsx';
 import CaixaSelecao from '../componentes/busca/CaixaSelecao.jsx';
+import { useRef } from "react";
+import { utils, writeFileXLSX } from "xlsx";
+const Swal = require('sweetalert2')
+
 
 export default function Formulario(props) {
+
     const [validado, setValidado] = useState(false);
     const [listaPessoa, setListaPessoa] = useState([]);
     const [pessoaSelecionada, setPessoaSelecionada] = useState({});
@@ -77,15 +82,18 @@ export default function Formulario(props) {
         }).then((resposta) => resposta.json())
             .then((dados) => {
                 if (dados.resultado) {
-                    alert("Erro ao gravar a devolução");
+                    Swal.fire("Erro ao gravar a devolução");
                 } else {
-                    alert("Devolução cadastrada com sucesso!");
                     props.setModoEdicao(false);
                     props.exibirTabela(true);
+                    Swal.fire(
+                        'Devolução Cadastrada!',
+                        'Com sucesso no sistema',
+                        'success')
                 }
             })
             .catch((erro) => {
-                alert("Erro ao cadastrar a devolução");
+                Swal.fire("Erro ao cadastrar a devolução");
                 console.error(erro);
             });
     }

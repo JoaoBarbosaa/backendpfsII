@@ -1,13 +1,22 @@
-import React, { useState } from "react";
-import { Button, Table, Container, Row, Col } from "react-bootstrap";
+import { Button, Table, Form, Container, Row, Col } from "react-bootstrap";
 import "./estilos/tabela.css";
+import { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useRef } from "react";
+import { utils, writeFileXLSX } from "xlsx";
 
 export default function TabelaDevolucao(props) {
 
     const [termoDeBusca, setTermoDeBusca] = useState('');
     const [exemplar, setExemplar] = useState([]);
     const [acervoLista, setAcervoLista] = useState([]);
+
+    const tbl = useRef(null)
+
+    function imprimir() {
+        const wb = utils.table_to_book(tbl.current);
+        writeFileXLSX(wb, "baixaexemplar.xlsx");
+    }
 
     return (
         <body id="corpo" className="colorwhite">
@@ -23,9 +32,12 @@ export default function TabelaDevolucao(props) {
                             Registrar Devolução
                         </Button>
                     </Col>
+                    <Col md="2">
+                        <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
+                    </Col>
                 </Row>
 
-                <Table striped bordered hover className="text-center">
+                <Table ref={tbl} striped bordered hover className="text-center">
                     <thead className="colorwhite">
                         <tr>
                             <th>Código</th>
