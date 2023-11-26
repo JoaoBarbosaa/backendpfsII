@@ -4,7 +4,7 @@ import "./estilos/tabela.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useRef } from "react";
 import { utils, writeFileXLSX } from "xlsx";
-
+const Swal = require('sweetalert2')
 export default function TabelaEmprestimo(props) {
 
   const [termoDeBusca, setTermoDeBusca] = useState('');
@@ -91,9 +91,24 @@ export default function TabelaEmprestimo(props) {
                   <td>
                     <Button variant="danger"
                       onClick={() => {
-                        if (window.confirm("Deseja realmente excluir o empréstimo?")) {
-                          props.excluirEmprestimo(emprestimo);
-                        }
+                        Swal.fire({
+                          title: "Tem certeza?",
+                          text: "Você não poderá reverter isso",
+                          icon: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#3085d6",
+                          cancelButtonColor: "#d33",
+                          confirmButtonText: "Sim, exclui isso!"
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+                            Swal.fire({
+                              title: "Deletado!",
+                              text: "Emprestimo deletado com sucesso. ",
+                              icon: "success"
+                            });
+                            props.excluirEmprestimo(emprestimo);
+                          }
+                        });
                       }}
                     >
                       <i className="bi bi-trash"></i>

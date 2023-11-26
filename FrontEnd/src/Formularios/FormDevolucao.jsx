@@ -6,10 +6,6 @@ import { Row, Col } from 'react-bootstrap';
 import { urlBase } from "../utilitarios/definicoes.js";
 import TabelaItensDevolucao from '../tabelas/TabelaItensDevolucao.jsx';
 import CaixaSelecao from '../componentes/busca/CaixaSelecao.jsx';
-import { useRef } from "react";
-import { utils, writeFileXLSX } from "xlsx";
-const Swal = require('sweetalert2')
-
 
 export default function Formulario(props) {
 
@@ -84,6 +80,7 @@ export default function Formulario(props) {
                 if (dados.resultado) {
                     Swal.fire("Erro ao gravar a devolução");
                 } else {
+                    alert("Devolução cadastrada com sucesso!");
                     props.setModoEdicao(false);
                     props.exibirTabela(true);
                     Swal.fire(

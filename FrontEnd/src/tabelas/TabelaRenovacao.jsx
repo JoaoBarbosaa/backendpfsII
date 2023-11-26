@@ -2,13 +2,20 @@ import React, { useState } from "react";
 import { Button, Table, Container, Row, Col } from "react-bootstrap";
 import "./estilos/tabela.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import { useRef } from "react";
+import { utils, writeFileXLSX } from "xlsx";
+const Swal = require('sweetalert2')
 export default function TabelaRenovacao(props) {
-
     const [termoDeBusca, setTermoDeBusca] = useState('');
     const [exemplar, setExemplar] = useState([]);
     const [acervoLista, setAcervoLista] = useState([]);
 
+    const tbl = useRef(null)
+
+    function imprimir(){
+      const wb = utils.table_to_book(tbl.current);
+        writeFileXLSX(wb, "renovacao    .xlsx");
+    }
     return (
 
         <body id="corpo" className="colorwhite ">
@@ -26,9 +33,11 @@ export default function TabelaRenovacao(props) {
                             Cadastrar
                         </Button>
                     </Col>
+                <Col md="2"> 
+                 <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
+                </Col>
                 </Row>
-
-                <Table striped bordered hover className="text-center">
+                <Table ref={tbl} striped bordered hover className="text-center">
                     <thead className="colorwhite">
                         <tr>
                             <th>Código</th>
@@ -78,9 +87,24 @@ export default function TabelaRenovacao(props) {
                                     <td>
                                         <Button variant="danger"
                                             onClick={() => {
-                                                if (window.confirm("Deseja realmente excluir o empréstimo?")) {
-                                                    props.excluirEmprestimo(emprestimo);
-                                                }
+                                                Swal.fire({
+                                                    title: "Tem certeza?",
+                                                    text: "Você não poderá reverter isso",
+                                                    icon: "warning",
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: "#3085d6",
+                                                    cancelButtonColor: "#d33",
+                                                    confirmButtonText: "Sim, exclui isso!"
+                                                  }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                      Swal.fire({
+                                                        title: "Deletado!",
+                                                        text: "Renovação deletada com sucesso. ",
+                                                        icon: "success"
+                                                      });
+                                                      props.excluirEmprestimo(emprestimo);;
+                                                    }
+                                                  });
                                             }}
                                         >
                                             <i className="bi bi-trash"></i>

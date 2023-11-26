@@ -5,7 +5,7 @@ import { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useRef } from "react";
 import { utils, writeFileXLSX } from "xlsx";
-
+const Swal = require('sweetalert2')
 export default function TabelaBaixa(props) {
   const tbl = useRef(null)
 
@@ -28,9 +28,7 @@ export default function TabelaBaixa(props) {
               Cadastrar
             </Button>
           </Col>
-        </Row>
-        <Row className='mb-2 mt-2 '>
-        <Col>
+        <Col md="2">
             <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
         </Col>
         </Row>
@@ -57,11 +55,24 @@ export default function TabelaBaixa(props) {
                     <Button
                       variant="danger"
                       onClick={() => {
-                        if (
-                          window.confirm("Deseja realmente excluir a exemplar?")
-                        ) {
-                          props.excluirBaixa(baixa);
-                        }
+                        Swal.fire({
+                          title: "Tem certeza?",
+                          text: "Você não poderá reverter isso",
+                          icon: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#3085d6",
+                          cancelButtonColor: "#d33",
+                          confirmButtonText: "Sim, exclui isso!"
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+                            Swal.fire({
+                              title: "Deletado!",
+                              text: "Baixa deletada com sucesso. ",
+                              icon: "success"
+                            });
+                            props.excluirBaixa(baixa);
+                          }
+                        });
                       }}
                     >
                       <svg
