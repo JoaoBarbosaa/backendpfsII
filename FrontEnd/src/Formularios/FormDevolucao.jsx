@@ -80,7 +80,6 @@ export default function Formulario(props) {
                 if (dados.resultado) {
                     Swal.fire("Erro ao gravar a devolução");
                 } else {
-                    alert("Devolução cadastrada com sucesso!");
                     props.setModoEdicao(false);
                     props.exibirTabela(true);
                     Swal.fire(
