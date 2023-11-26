@@ -34,9 +34,11 @@ export default function TabelaRenovacao(props) {
                         </Button>
                     </Col>
                 </Row>
+                <Row className='mb-2 mt-2'>
                 <Col>
                  <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
                 </Col>
+                </Row>
                 <Table ref={tbl} striped bordered hover className="text-center">
                     <thead className="colorwhite">
                         <tr>

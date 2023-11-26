@@ -29,7 +29,7 @@ export default function TabelaBaixa(props) {
             </Button>
           </Col>
         </Row>
-        <Row className='mb-2 mt-2 '>
+        <Row className='mb-2 mt-2'>
         <Col>
             <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
         </Col>
