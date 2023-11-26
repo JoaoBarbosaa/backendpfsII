@@ -2,13 +2,20 @@ import React, { useState } from "react";
 import { Button, Table, Container, Row, Col } from "react-bootstrap";
 import "./estilos/tabela.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useRef } from "react";
+import { utils, writeFileXLSX } from "xlsx";
 
 export default function TabelaRenovacao(props) {
-
     const [termoDeBusca, setTermoDeBusca] = useState('');
     const [exemplar, setExemplar] = useState([]);
     const [acervoLista, setAcervoLista] = useState([]);
 
+    const tbl = useRef(null)
+
+    function imprimir(){
+      const wb = utils.table_to_book(tbl.current);
+        writeFileXLSX(wb, "renovacao    .xlsx");
+    }
     return (
 
         <body id="corpo" className="colorwhite ">
@@ -27,8 +34,10 @@ export default function TabelaRenovacao(props) {
                         </Button>
                     </Col>
                 </Row>
-
-                <Table striped bordered hover className="text-center">
+                <Col>
+                 <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
+                </Col>
+                <Table ref={tbl} striped bordered hover className="text-center">
                     <thead className="colorwhite">
                         <tr>
                             <th>Código</th>
