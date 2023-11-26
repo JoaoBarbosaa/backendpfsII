@@ -2,9 +2,10 @@ import { Button, Table, Form, Container, Row, Col } from "react-bootstrap";
 import "./estilos/tabela.css";
 import { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import { useRef } from "react";
+import { utils, writeFileXLSX } from "xlsx";
+const Swal = require('sweetalert2')
 export default function TabelaDevolucao(props) {
-
     const [termoDeBusca, setTermoDeBusca] = useState('');
     const [exemplar, setExemplar] = useState([]);
     const [acervoLista, setAcervoLista] = useState([]);

@@ -6,7 +6,7 @@ import { Row, Col } from 'react-bootstrap';
 import { urlBase } from "../utilitarios/definicoes.js";
 import TabelaItensDevolucao from '../tabelas/TabelaItensDevolucao.jsx';
 import CaixaSelecao from '../componentes/busca/CaixaSelecao.jsx';
-
+const Swal = require('sweetalert2')
 export default function Formulario(props) {
 
     const [validado, setValidado] = useState(false);
