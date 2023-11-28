@@ -44,7 +44,7 @@ export default function TabelaDevolucao(props) {
                                 props.exibirTabela(false);
                                 props.setModoEdicao(false);
                             }}>
-                            Registrar Devolução
+                            Cadastrar
                         </Button>
                     </Col>
                     <Col md="2">
