@@ -17,13 +17,19 @@ export default function TabelaBaixa(props) {
   }
   return (
     <body id="corpo" className="colorwhite ">
-      <Image src="img/delete.PNG" alt="Descrição da imagem" fluid />
       <Container className="border mb-2 mt-2 corpoTabela" >
         <h2 className="text-center m-4 ">Baixas realizadas</h2>
         <TfiHelpAlt onClick={() => {
             Swal.fire({
               title: "Precisa de ajuda?",
-              html: `Para efetuar um cadastro, clicar no botão verde <span></span> `,
+              html: `<hr><p>Para efetuar um cadastro, clicar no botão verde. <span><Image src="/cadastrar.png" alt="Descrição da imagem" fluid/></span></p>
+              <p><Image src="/exemplo.png" alt="Descrição da imagem"/></p>
+              <p>Preencha todos os campos e clique no botão <Strong>"Cadastrar"</Strong> novamente.</p>
+              <hr>
+              <p>Para excluir um determinado item, clique no ícone da lixeira em vermelho. <br><span><Image src="/delete.png" alt="Descrição da imagem"/></span></p>
+              <hr>
+              <p>Para gerar um relatório em Excel, clique no botão em azul". <br><span><Image src="/exportar.png" alt="Descrição da imagem"/></span></p>
+              `,
               icon: "question"
             });
           }} />

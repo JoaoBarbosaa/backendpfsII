@@ -1,6 +1,9 @@
 import { Button, Table, Form, Container, Row, Col} from "react-bootstrap";
 import { urlBase } from "../utilitarios/definicoes";
 import { useState } from "react";
+import { TfiHelpAlt } from "react-icons/tfi";
+import Image from 'react-bootstrap/Image';
+const Swal = require('sweetalert2')
 export default function TabelaUsuarios(props) {
 
   const [termoDeBusca, setTermoDeBusca] = useState('');
@@ -23,6 +26,20 @@ export default function TabelaUsuarios(props) {
     <body id="corpo" className="colorwhite">
       <Container className="border corpoTabela">
         <h2 className="text-center m-4">Tabela Cadastro de Usuários</h2>
+        <TfiHelpAlt onClick={() => {
+            Swal.fire({
+              title: "Precisa de ajuda?",
+              html: `<hr><p>Para efetuar um cadastro, clicar no botão verde. <span><Image src="/cadastrar.png" alt="Descrição da imagem" fluid/></span></p>
+              <p><Image src="/exemplo.png" alt="Descrição da imagem"/></p>
+              <p>Preencha todos os campos e clique no botão <Strong>"Cadastrar"</Strong> novamente.</p>
+              <hr>
+              <p>Para excluir um determinado item, clique no ícone da lixeira em vermelho. <br><span><Image src="/delete.png" alt="Descrição da imagem"/></span></p>
+              <hr>
+              <p>Para gerar um relatório em Excel, clique no botão em azul". <br><span><Image src="/exportar.png" alt="Descrição da imagem"/></span></p>
+              `,
+              icon: "question"
+            });
+          }} />
         <Button
           variant="success"
           onClick={() => {

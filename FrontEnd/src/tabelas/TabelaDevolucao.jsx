@@ -4,6 +4,8 @@ import { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useRef } from "react";
 import { utils, writeFileXLSX } from "xlsx";
+import { TfiHelpAlt } from "react-icons/tfi";
+import Image from 'react-bootstrap/Image';
 const Swal = require('sweetalert2')
 export default function TabelaDevolucao(props) {
     const [termoDeBusca, setTermoDeBusca] = useState('');
@@ -21,6 +23,20 @@ export default function TabelaDevolucao(props) {
         <body id="corpo" className="colorwhite">
             <Container className="border mb-2 mt-2 corpoTabela" >
                 <h2 className="text-center m-4">Devoluções Cadastradas</h2>
+                <TfiHelpAlt onClick={() => {
+            Swal.fire({
+              title: "Precisa de ajuda?",
+              html: `<hr><p>Para efetuar um cadastro, clicar no botão verde. <span><Image src="/cadastrar.png" alt="Descrição da imagem" fluid/></span></p>
+              <p><Image src="/exemplo.png" alt="Descrição da imagem"/></p>
+              <p>Preencha todos os campos e clique no botão <Strong>"Cadastrar"</Strong> novamente.</p>
+              <hr>
+              <p>Para excluir um determinado item, clique no ícone da lixeira em vermelho. <br><span><Image src="/delete.png" alt="Descrição da imagem"/></span></p>
+              <hr>
+              <p>Para gerar um relatório em Excel, clique no botão em azul". <br><span><Image src="/exportar.png" alt="Descrição da imagem"/></span></p>
+              `,
+              icon: "question"
+            });
+          }} />
                 <Row className='mb-2 mt-2 '>
                     <Col>
                         <Button variant="success"
