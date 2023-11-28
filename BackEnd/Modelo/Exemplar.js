@@ -68,11 +68,11 @@ export default class Exemplar{
         const exemplarDB = new ExemplarDB();
         this.#codigo = await exemplarDB.incluir(this);
     }
-
     async atualizar(){
         const exemplarDB = new ExemplarDB();
         await exemplarDB.alterar(this);
     }
+
 
     async remover(){
         const exemplarDB = new ExemplarDB();

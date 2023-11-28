@@ -137,6 +137,7 @@ export default class ExemplarCTRL{
           }
     }
 
+
     excluir(requisicao, resposta){
         resposta.type("application/json");
 

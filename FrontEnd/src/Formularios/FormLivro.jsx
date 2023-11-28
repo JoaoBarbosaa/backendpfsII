@@ -74,6 +74,7 @@ export default function FormLivro(props) {
                                 <Form.Label htmlFor="tituloDoLivro" className="form-label">Titulo Do Livro</Form.Label>
                                 <Form.Control type="text" value={livro.tituloDoLivro} className="form-control" id="tituloDoLivro" onChange={manipularMudanca} required />
                                 <Form.Control.Feedback type='invalid'>Titulo do Livro</Form.Control.Feedback>
+                                
                             </Form.Group>
                         </Col>
                         </Row>

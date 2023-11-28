@@ -5,6 +5,8 @@ import { useState } from "react";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { useRef } from "react";
 import { utils, writeFileXLSX } from "xlsx";
+import { TfiHelpAlt } from "react-icons/tfi";
+import Image from 'react-bootstrap/Image';
 const Swal = require('sweetalert2')
 export default function TabelaBaixa(props) {
   const tbl = useRef(null)
@@ -13,11 +15,18 @@ export default function TabelaBaixa(props) {
     const wb = utils.table_to_book(tbl.current);
       writeFileXLSX(wb, "baixaexemplar.xlsx");
   }
-
   return (
     <body id="corpo" className="colorwhite ">
+      <Image src="img/delete.PNG" alt="Descrição da imagem" fluid />
       <Container className="border mb-2 mt-2 corpoTabela" >
         <h2 className="text-center m-4 ">Baixas realizadas</h2>
+        <TfiHelpAlt onClick={() => {
+            Swal.fire({
+              title: "Precisa de ajuda?",
+              html: `Para efetuar um cadastro, clicar no botão verde <span></span> `,
+              icon: "question"
+            });
+          }} />
         <Row className='mb-2 mt-2 '>
           <Col>
             <Button variant="success"

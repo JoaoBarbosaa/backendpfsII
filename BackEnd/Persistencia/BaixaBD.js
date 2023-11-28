@@ -30,6 +30,13 @@ export default class BaixaDB {
         }
     }
 
+    async alterarStatus(codigo) {
+        const conexao = await conectar();
+        const sql = `UPDATE exemplar SET status='Desativado' WHERE codigo=${codigo.exemplar.codigo}`;
+        await conexao.query(sql);
+}
+
+
     async consultar(termo) {
         const listaBaixa = [];
         const conexao = await conectar();

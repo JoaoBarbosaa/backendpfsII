@@ -49,6 +49,10 @@ export default class Baixa{
         this.#codigo = await baixaDB.incluir(this);
     }
 
+    async atualizarStatus(){
+        const exemplarDB = new BaixaDB();
+        await exemplarDB.alterarStatus(this);
+    }
 
     async remover(){
         const baixaDB = new BaixaDB();

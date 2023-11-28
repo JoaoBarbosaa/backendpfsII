@@ -37,6 +37,9 @@ export default class ExemplarDB {
         }
     }
 
+
+
+
     async excluir(exemplar) {
 
         if (exemplar instanceof Exemplar) {

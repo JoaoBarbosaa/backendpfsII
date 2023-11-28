@@ -11,7 +11,6 @@ export default class ExemplarCTRL{
         const motivBaixa = dados.motivBaixa;
         const codExemplar = dados.exemplar && dados.exemplar.codigo;
         const exemplar = new Exemplar(0,"")
-        
   
         if(!dados.exemplar){
             resposta.json({
@@ -19,15 +18,13 @@ export default class ExemplarCTRL{
                 mensagem: "Dados de exemplar não encontrado"
             });
             return;}
-        
         exemplar.consultarCodigo(codExemplar)
         .then((pessoaEncontrada) => {
-
-
             if (pessoaEncontrada && pessoaEncontrada.length > 0){
                 const primeiraPessoa = pessoaEncontrada[0];
                 const baixa = new Baixa(0, motivBaixa, primeiraPessoa)
                 baixa.gravar().then((emprestimoGravado)=> {
+                    baixa.atualizarStatus(primeiraPessoa)
                     resposta.json({
                         status:true,
                         baixa: {
@@ -37,9 +34,9 @@ export default class ExemplarCTRL{
                                 codigo: baixa.exemplar.codigo,
                             }
                         }
-                    })
+                    }
+                    )
                 })
-
             }
         })
         
