@@ -73,7 +73,7 @@ export default function TabelaBaixa(props) {
           </Col>
         </Row>
       
-          {//imprimir}
+          {/*exportar aqui*/}
 
         <Table ref={tbl} striped bordered hover className="text-center">
           <thead className="colorwhite">
