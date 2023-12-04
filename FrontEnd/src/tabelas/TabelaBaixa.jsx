@@ -15,6 +15,20 @@ export default function TabelaBaixa(props) {
     const wb = utils.table_to_book(tbl.current);
       writeFileXLSX(wb, "baixaexemplar.xlsx");
   }
+
+  const [termoDeBusca, setTermoDeBusca] = useState('');
+
+
+  const buscaBaixa = () => {
+    if(termoDeBusca.length === 0){
+      props.buscar()
+    }else{
+      fetch(`${urlBase}/baixa/buscar/${termoDeBusca}`)
+      .then((response) => response.json())
+      .then((data) => props.setBaixas(data))
+      .catch((error) => console.error('Erro ao buscar os dados:', error));
+    }
+  };
   return (
     <body id="corpo" className="colorwhite ">
       <Container className="border mb-2 mt-2 corpoTabela" >
@@ -33,8 +47,8 @@ export default function TabelaBaixa(props) {
               icon: "question"
             });
           }} />
-        <Row className='mb-2 mt-2 '>
-          <Col>
+        <Row className='mb-2 mt-2 '> 
+        <Col>
             <Button variant="success"
               onClick={() => {
                 props.exibirTabela(false)
@@ -43,10 +57,24 @@ export default function TabelaBaixa(props) {
               Cadastrar
             </Button>
           </Col>
-        <Col md="2">
+          {/*           <Col className="d-flex justify-content-end md-2">
+            <Form className="d-flex mb-2 mt-2">
+            <Form.Control
+              type="text"
+              value={termoDeBusca}
+              onChange={(e) => setTermoDeBusca(e.target.value)}
+              placeholder="Pesquisar por baixa"
+            />
+            <Button className="BotaoPesquisar" type="button" onClick={buscaBaixa}>Pesquisar</Button>
+          </Form>
+          </Col> */}
+           <Col className="d-flex justify-content-end md-2 mb-2">
             <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
-        </Col>
+          </Col>
         </Row>
+      
+          {//imprimir}
+
         <Table ref={tbl} striped bordered hover className="text-center">
           <thead className="colorwhite">
             <tr>

@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 export default function TelaFormBaixa(props){
 
     const [exibirTabela, setExibirTabela] = useState (true);
-    const [baixa, setBaixa] = useState ([]);
+    const [baixas, setBaixas] = useState ([]);
     const [modoEdicao, setModoEdicao] = useState (false);
     const [erro, setErro] = useState(null);
     const [processado, setProcessado] = useState (false);
@@ -58,14 +58,11 @@ export default function TelaFormBaixa(props){
             method: "GET"
         })
         .then((resposta) => {
-            if (!resposta.ok) {
-                throw new Error('Erro na requisição');
-            }
             return resposta.json();
         })
         .then((dados) => {
             if (Array.isArray(dados)) {
-                setBaixa(dados);
+                setBaixas(dados);
                 exibirTabela(true);
             } else {
                 setErro(dados.status);
@@ -104,18 +101,18 @@ export default function TelaFormBaixa(props){
             {
                 exibirTabela ? 
                 <TabelaExemplar 
-                listaBaixa={baixa} 
+                listaBaixa={baixas} 
                 exibirTabela={setExibirTabela}
                 editarBaixa={prepararBaixaParaEdicao}
                 excluirBaixa={apagarBaixa}
                 setModoEdicao={setModoEdicao}
                 buscar={buscarBaixa}
-                setBaixa={setBaixa}
+                setBaixas={setBaixas}
                 /> 
                 :
                 <FormExemplar 
-                listaBaixa={baixa} 
-                setExemplar={setBaixa}
+                listaBaixas={baixas} 
+                setBaixas={setBaixas}
                 exibirTabela={setExibirTabela}
                 buscar={buscarBaixa}
                 modoEdicao={modoEdicao}

@@ -47,7 +47,7 @@ export default function TabelaDevolucao(props) {
                             Registrar Devolução
                         </Button>
                     </Col>
-                    <Col md="2">
+                    <Col className="d-flex justify-content-end md-2 mb-2">
                         <Button variant="primary" onClick={imprimir}>Exportar para Excel</Button>
                     </Col>
                 </Row>

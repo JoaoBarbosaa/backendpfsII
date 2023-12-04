@@ -49,13 +49,22 @@ export default class ExemplarCTRL{
         if(requisicao.method === "DELETE" && requisicao.is('application/json')){
             const dados = requisicao.body;
             const codigo = dados.codigo;
+            const codExemplar = dados.exemplar && dados.exemplar.codigo;
+            const exemplar = new Exemplar(0,"")
             const baixa = new Baixa(codigo);
 
-            baixa.remover().then(()=>{
-                resposta.json({
-                    status:true,
-                    mensagem:"Baixa excluída com sucesso!"
-                })
+            exemplar.consultarCodigo(codExemplar).then((pessoaEncontrada) => {
+                if (pessoaEncontrada && pessoaEncontrada.length > 0){
+                    const primeiraPessoa = pessoaEncontrada[0];
+                    const statusbaixa = new Baixa(primeiraPessoa)
+                    baixa.remover().then(()=>{
+                        statusbaixa.alterarStatusDelete(primeiraPessoa)
+                        resposta.json({
+                            status:true,
+                            mensagem:"Baixa excluída com sucesso!"
+                        })
+                    })
+                }
             })
             .catch((erro) => {
                 resposta.json({
@@ -80,6 +89,32 @@ export default class ExemplarCTRL{
             const baixa = new Baixa();
 
             baixa.consultar(termo)
+            .then((baixas)=>{
+                resposta.json(baixas);
+            })
+            .catch((erro) => {
+                resposta.json({
+                    status:false,
+                    mensagem: erro.message
+                })
+            });
+        }
+        else{
+            resposta.status(400).json({
+                status:false,
+                mensagem:"Requisição invalida! Método não permitido!"
+            });
+        }
+    }
+
+    consultarBaixa(requisicao, resposta){
+        resposta.type("application/json");
+
+        if(requisicao.method === "GET"){
+            const motivBaixa = requisicao.params.motivBaixa;
+            const baixa = new Baixa();
+
+            baixa.consultarBaixa(motivBaixa)
             .then((baixas)=>{
                 resposta.json(baixas);
             })
