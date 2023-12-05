@@ -25,7 +25,7 @@ export default function TabelaAutores(props) {
 
   return (
     <body id="corpo" className="colorwhite">
-      <Container className="border corpoTabela">
+      <Container className="border corpoTabela mb-2 mt-2">
         <h2 className="text-center m-4">Tabela Cadastro de Autores</h2>
         <TfiHelpAlt onClick={() => {
             Swal.fire({
@@ -41,6 +41,9 @@ export default function TabelaAutores(props) {
               icon: "question"
             });
           }} />
+
+        <Row className='mb-2 mt-2 '> 
+        <Col>
         <Button
           variant="success"
           onClick={() => {
@@ -50,9 +53,10 @@ export default function TabelaAutores(props) {
         >
           Cadastrar
         </Button>
-        <Row>
-          <Col className=" justify-content-end md-2">
-          <Form className="d-flex mb-2 mt-2">
+        </Col>
+        
+          <Col className="d-flex justify-content-end md-2">
+          <Form className="d-flex">
             <Form.Control
               type="text"
               value={termoDeBusca}

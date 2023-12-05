@@ -164,20 +164,16 @@ export default function FormExemplar(props) {
 
           <Row>
             <Col md={4}>
-              <Form.Group className="mb-3" controlId="status">
-                <Form.Label>Status</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Digite o status"
-                  id="status"
-                  onChange={manipularMudanca}
-                  value={exemplar.status}
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Digite um status válido
-                </Form.Control.Feedback>
-              </Form.Group>
+            <Form.Group className="mb-3" controlId="status">
+            <Form.Label>status</Form.Label>
+            <Form.Select value={exemplar.status} required id="status" onChange={manipularMudanca} aria-label="Default select example">
+              <option value={setValidado}>Selecione uma das opções</option>
+              <option value="Ativo">Ativo</option>
+            </Form.Select>
+            <Form.Control.Feedback type="invalid">
+              Selecione uma status
+            </Form.Control.Feedback>
+            </Form.Group>
             </Col>
 
             <Col>

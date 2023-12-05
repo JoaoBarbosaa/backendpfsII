@@ -43,7 +43,10 @@ export default function TabelaPessoas(props) {
               icon: "question"
             });
           }} />
-        <Button variant="success"
+
+        <Row className='mb-2 mt-2'>
+          <Col>
+          <Button variant="success"
           onClick={() => {
             props.exibirTabela(false)
             props.setModoEdicao(false)
@@ -51,9 +54,8 @@ export default function TabelaPessoas(props) {
         >
           Cadastrar
         </Button>
-
-        <Row>
-          <Col className=" justify-content-end md-2">
+          </Col>
+          <Col className="d-flex justify-content-end md-2">
           <Form className="d-flex mb-2 mt-2">
             <Form.Control
               type="text"

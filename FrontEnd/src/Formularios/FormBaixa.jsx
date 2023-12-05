@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Row, Col } from 'react-bootstrap';
 import "./estilos/EstiloForm.css";
-import CaixaSelecao from "../componentes/busca/CaixaSelecao";
+import CaixaSelecao from "../componentes/busca/CaixaSelecaoBaixa.jsx";
 import { urlBase } from "../utilitarios/definicoes.js";
 const Swal = require('sweetalert2')
 

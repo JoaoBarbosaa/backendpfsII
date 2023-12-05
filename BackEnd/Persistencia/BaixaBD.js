@@ -32,10 +32,13 @@ export default class BaixaDB {
 
     async alterarStatus(codigo) {
         const conexao = await conectar();
-        const sql = `UPDATE exemplar SET status='Desativado' WHERE codigo=${codigo.exemplar.codigo}`;
-        await conexao.query(sql);
-}
+        const sql = `UPDATE exemplar SET status='Baixa' WHERE codigo=${codigo.exemplar.codigo}`;
+        await conexao.query(sql);}
 
+        async alterarStatusDelete(codigo) {
+            const conexao = await conectar();
+            const sql = `UPDATE exemplar SET status='Ativo' WHERE codigo=${codigo.codigo.codigo}`;
+            await conexao.query(sql);}
 
     async consultar(termo) {
         const listaBaixa = [];
@@ -47,6 +50,35 @@ export default class BaixaDB {
                       INNER JOIN acervo as a on a.codigoRegisto = 
                       e.codigoAcervo WHERE a.tituloDoLivro LIKE ?`;
         const parametros = ['%' + termo + '%'];
+
+        const [rows] = await conexao.query(sql, parametros);
+
+
+        for (const row of rows) {
+            const baixaFormatada = {
+                codigo: row.codigo,
+                motivBaixa: row.motivBaixa,
+                exemplar: {
+                    codigo: row.codigoExemplar,
+                    titulo: row.tituloDoLivro
+                }
+            };
+            listaBaixa.push(baixaFormatada);
+        }
+
+        return listaBaixa;
+    }
+
+    async consultarBaixa(motivBaixa) {
+        const listaBaixa = [];
+        const conexao = await conectar();
+        const sql = `SELECT b.codigo, b.motivBaixa,
+                     b.codigoExemplar, a.tituloDoLivro
+                      FROM baixa as b INNER JOIN exemplar 
+                      as e ON b.codigoExemplar = e.codigo 
+                      INNER JOIN acervo as a on a.codigoRegisto = 
+                      e.codigoAcervo WHERE b.motivBaixa LIKE ?`;
+        const parametros = [`%${motivBaixa}%`];
 
         const [rows] = await conexao.query(sql, parametros);
 

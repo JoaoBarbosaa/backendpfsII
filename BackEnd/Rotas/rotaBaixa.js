@@ -9,7 +9,7 @@ const baixaCtrl = new BaixaCTRL();
 rotaBaixa.post('/', baixaCtrl.gravar)
 .delete('/', baixaCtrl.excluir)
 .get('/', baixaCtrl.consultar)
-// .get('/buscar/:titulo', exemplarCtrl.consultarExemplar)
+.get('/buscar/:motivBaixa', baixaCtrl.consultarBaixa)
 //.get('/:codigo', baixaCtrl.consultarCodigo);
 
 export default rotaBaixa;

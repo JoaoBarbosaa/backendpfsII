@@ -54,6 +54,11 @@ export default class Baixa{
         await exemplarDB.alterarStatus(this);
     }
 
+    async alterarStatusDelete(){
+        const exemplarDB = new BaixaDB();
+        await exemplarDB.alterarStatusDelete(this);
+    }
+
     async remover(){
         const baixaDB = new BaixaDB();
         await baixaDB.excluir(this);
@@ -65,4 +70,9 @@ export default class Baixa{
         return baixa;
     }
 
+    async consultarBaixa(motivBaixa){
+        const baixaDB = new BaixaDB();
+        const baixa = await baixaDB.consultarBaixa(motivBaixa);
+        return baixa;
+    }
 }
