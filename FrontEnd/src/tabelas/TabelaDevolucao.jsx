@@ -44,7 +44,7 @@ export default function TabelaDevolucao(props) {
                                 props.exibirTabela(false);
                                 props.setModoEdicao(false);
                             }}>
-                            Registrar Devolução
+                            Cadastrar
                         </Button>
                     </Col>
                     <Col className="d-flex justify-content-end md-2 mb-2">
