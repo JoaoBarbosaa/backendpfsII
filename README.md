@@ -28,3 +28,9 @@ e alteração de informações, além de poder realizar a pesquisa dos cadastros
 - [X] Renovação de emprestimo
 - [X] Devolução de exemplar
 - [X] Baixa de exemplar
+
+By:
+Emanuel
+Jessica
+Kezia
+João
