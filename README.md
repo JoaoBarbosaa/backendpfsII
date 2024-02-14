@@ -30,7 +30,4 @@ e alteração de informações, além de poder realizar a pesquisa dos cadastros
 - [X] Baixa de exemplar
 
 By:
-Emanuel
-Jessica
-Kezia
-João
+Emanuel - Jessica - Kezia - João
