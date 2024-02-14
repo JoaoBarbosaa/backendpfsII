@@ -1,4 +1,4 @@
-# 📝 SistemaQuintalDaLeitura
+# 📝 Sistema Quintal Da Leitura
 <p> O web software QL (Quintal da Leitura), tem como objetivo um sistema para uma biblioteca de uma escola pública que somente poderá ser administrado pelo bibliotecário de tal escola. 
 Este sistema proporcionará o gerenciamento relacionado ao controle total sobre o acervo de livros com o objetivo de proporcionar organização, controle de acesso e registros das operações realizadas.</p>
 <p>Com o sistema QL, o bibliotecário, na função de usuário, terá a possibilidade de  efetivar o login tornando-se administrador, podendo por fim realizar o cadastro de pessoas que irão utilizar serviços 
